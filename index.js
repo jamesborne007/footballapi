@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3100;
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 const cors = require('cors');
+const notFound = require('./middleware/notFound') 
 
 app.use(cors());
 app.use(express.json());
@@ -14,9 +15,7 @@ const teamRouter = require('./routes/teamRouter')
 app.use(teamRouter);
 
 //ERROR ROUTE
-app.use((req,res) =>{
-    res.status(404).send('Route does not exist')
-})
+app.use(notFound)
 
 
 
