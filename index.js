@@ -4,6 +4,11 @@ const app = express();
 const PORT = process.env.PORT || 3100;
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.json());
+
 
 const teamRouter = require('./routes/teamRouter')
 app.use(teamRouter);
